@@ -1,4 +1,4 @@
-# Drupal (8.9.x, 9.x) with simpleSAMLphp - Docker Example
+# Drupal (8.9.x, 9.x) with simpleSAMLphp MultiAuth - Docker Example
 
 An example for integrating simpleSAMLphp with Drupal using Docker.
 
@@ -9,24 +9,47 @@ Packages:
 - cirrusidentity/simplesamlphp-module-authoauth2 (https://github.com/cirrusidentity/simplesamlphp-module-authoauth2)
 
 
-# Usage
+# Installation
+
 1. Open *docker-compose.yaml* file:
 2. Update the *GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, FACEBOOK_CLIENT_ID, FACEBOOK_CLIENT_SECRET* environment variables with your valid values.
 3. Run the following command:
     
+
         docker-compose up -d
 
-4. Open http://localhost:8080.
-5. Install Drupal (check the DB config in *docker-compose.yaml*_* file)
-6. Install *simpleSAMLphp* module (go to http://localhost:8080/admin/modules).
-7. Go to http://localhost:8080/admin/config/people/simplesamlphp_auth, at "Basic settings" tab:
+    
+    It will build the drupal image in the same directory and start containers.
+
+4. Open drupal site at http://localhost:8080.
+
+# Usage
+
+1. Follow the steps to install Drupal (check the DB config in *docker-compose.yaml* file).
+2. Install *simpleSAMLphp* module (go to */admin/modules*).
+3. Go to */admin/config/people/simplesamlphp_auth*, at "Basic settings" tab:
     - Check "Activate authentication via SimpleSAMLphp" option.
     - Type "**example-multi**" for "Authentication source for this SP" field.
     - Click Save.
-8. Go to "User info and syncing" tab:
+4. Go to "User info and syncing" tab:
     - Type "**email**" for the first three inputs.
     - Click Save.
-9. Now you can go to the login page and try using simpleSAML.
+5. Now you can go to the login page and try using simpleSAML.
 
+# Testing
 
+This example uses "example-userpass" authentication with the following account: 
 
+    Username: student
+    Password: 123
+
+You can change these config in *authsources.php* file.
+
+# Configuration
+
+To config https, go to config.php file:
+
+    // Base URL
+    $config['baseurlpath'] = 'http://'. $host .'/simplesaml/';
+
+just change "http" to "https".
