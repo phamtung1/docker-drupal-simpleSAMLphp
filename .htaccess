@@ -147,13 +147,7 @@ AddEncoding gzip svgz
 
  # Allow access to simplesamlphp scripts.
 
-	RewriteCond %{REQUEST_URI} !/simplesaml/[^/]*\.php$
-	RewriteCond %{REQUEST_URI} !/simplesaml/admin/[^/]*\.php$
-	RewriteCond %{REQUEST_URI} !/simplesaml/module.php/multiauth/[^/]*\.php$
-	RewriteCond %{REQUEST_URI} !/simplesaml/module.php/authoauth2/[^/]*\.php$
-	RewriteCond %{REQUEST_URI} !/simplesaml/saml2/idp/[^/]*\.php$
-	RewriteCond %{REQUEST_URI} !/simplesaml/[^/]*\.php/sanitycheck/[^/]*\.php$
-	RewriteCond %{REQUEST_URI} !/simplesaml/[^/]*\.php/saml/[^/]*\.php$
+	RewriteCond %{REQUEST_URI} !^/simplesaml
 	
   # Deny access to any other PHP files that do not match the rules above.
   # Specifically, disallow autoload.php from being served directly.
