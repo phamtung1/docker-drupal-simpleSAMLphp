@@ -26,14 +26,23 @@ Packages:
 # Usage
 
 1. Follow the steps to install Drupal (check the DB config in *docker-compose.yaml* file).
+
+<img src="https://raw.githubusercontent.com/phamtung1/docker-drupal-simpleSAMLphp/master/screenshots/setup-drupal-db-config.png">
+
 2. Install *simpleSAMLphp* module (go to */admin/modules*).
 3. Go to */admin/config/people/simplesamlphp_auth*, at "Basic settings" tab:
     - Check "Activate authentication via SimpleSAMLphp" option.
     - Type "**example-multi**" for "Authentication source for this SP" field.
     - Click Save.
+
+<img src="https://raw.githubusercontent.com/phamtung1/docker-drupal-simpleSAMLphp/master/screenshots/simplessamlphp-config1.png">
+
 4. Go to "User info and syncing" tab:
     - Type "**email**" for the first three inputs.
     - Click Save.
+
+<img src="https://raw.githubusercontent.com/phamtung1/docker-drupal-simpleSAMLphp/master/screenshots/simplessamlphp-config2.png">
+
 5. Now you can go to the login page and try using simpleSAML.
 
 # Testing
